@@ -22,7 +22,6 @@ GROUP BY s.classroom
 ORDER BY sum(TIMEDIFF(end_pair, start_pair)) DESC limit 2
 
 Задача 6
-
 With  bat  as  (
 select  ROW_NUMBER() OVER(ORDER BY date, name) n,
 COUNT(*) OVER() maxi, * from  battles)
