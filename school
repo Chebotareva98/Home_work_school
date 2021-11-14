@@ -1,21 +1,30 @@
 Задача 1
-Select  p.name, COUNT(trip) as count from Pass_in_trip pit INNER JOIN Passenger p ON pit.passenger = p.id GROUP BY pit.passenger ORDER BY count DESC, name
+select  p.name, COUNT(trip) as count 
+from Pass_in_trip pit 
+INNER JOIN Passenger p ON pit.passenger = p.id 
+GROUP BY pit.passenger 
+ORDER BY count DESC, name
 
 Задача 2
-select  distinct  TIMEDIFF( 
-                (select  end_pair from Timepair WHERE id=4),
-                (select  start_pair from Timepair WHERE id=2)
-                ) as time
+select  distinct  TIMEDIFF( (select  end_pair from Timepair WHERE id=4),(select  start_pair from Timepair WHERE id=2)) as time
 from Timepair;
-
+Задача 3
+select distinct r.*
+from Rooms as r 
+JOIN Reservations as re ON r.id= re.room_id
+WHERE WEEKOFYEAR(start_date)= 12 AND EXTRACT(YEAR FROM start_date) = 2020;
 
 Задача 4
-Select  s.classroom from Schedule s INNER JOIN Timepair t ON s.number_pair = t.id GROUP BY s.classroom ORDER BY sum(TIMEDIFF(end_pair, start_pair)) DESC limit 2
+select  s.classroom
+from Schedule s
+INNER JOIN Timepair t ON s.number_pair = t.id 
+GROUP BY s.classroom 
+ORDER BY sum(TIMEDIFF(end_pair, start_pair)) DESC limit 2
 
 Задача 6
 
 With  bat  as  (
-Select  ROW_NUMBER() OVER(ORDER BY date, name) n,
+select  ROW_NUMBER() OVER(ORDER BY date, name) n,
 COUNT(*) OVER() maxi, * from  battles)
 SelectT b1.n as rn_1, b1.name as name_1, b1.date as date_1, b2.n as rn_2, b2.name as name_2, b2.date as date_2
 from  bat  b1
