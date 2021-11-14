@@ -30,7 +30,7 @@ uniquelist = set(nums)
 target = 7
 for n in itertools.combinations(uniquelist, 2):
     if n[0] + n[1] == target:
-        print str(n[0]) + " + " + str(n[1])
+        print str(n[0]) + "and" + str(n[1])
         
  Теория веротности        
         0,08 - 2.575*(0,04/16)<= u <=  0,08 + 2,575 *(0,04 / 16)
